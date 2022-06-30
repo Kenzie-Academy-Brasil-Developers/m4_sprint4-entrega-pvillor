@@ -40,13 +40,13 @@ services:
     ports:
       - 5431:5432
     environment:
-      - POSTGRES_USER=pvill
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=tests_products
     volumes:
       - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U pvill -d tests_products"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tests_products"]
       interval: 10s
       timeout: 5s
       retries: 5
